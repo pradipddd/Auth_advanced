@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block first %}
+
+{% for i in file %}
+
+   <img src="{{i.document.url }}" style='width: 20%;height: 5%;'>
+{% endfor %}
+
+<p><a href="{% url 'home' %}">Return to home</a></p>
+
+{% endblock %}

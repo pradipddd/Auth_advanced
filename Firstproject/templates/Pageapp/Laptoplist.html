@@ -1,0 +1,46 @@
+
+
+<div class="card mb-3" style="max-width: 540px;">
+    {% for laptop in page_obj %}
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{laptop.document.url}}" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Laptop</h5>
+          <ul>
+            <li>Name-{{laptop.name}}</li>
+            <li>Company-{{laptop.company}}</li>
+            <li>Ram-{{laptop.ram}}</li>
+            <li>Rom{{laptop.rom}}</li>
+            <li>Price-{{laptop.price}}</li>
+            <li>Processor-{{laptop.processor}}</li>
+        </ul>
+          
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="{% url 'laptop_show' %}?page=1">&laquo; first</a>
+            <a href="{% url 'laptop_show' %}?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="{% url 'laptop_show' %}?page={{ page_obj.next_page_number }}">next</a>
+            <a href="{% url 'laptop_show' %}?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
